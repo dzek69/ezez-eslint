@@ -2,6 +2,10 @@
 
 Zero config ESLint setup for all your projects. Very strict by default.
 
+> WIP warning:
+>
+> This library is still in development, some breaking changes to the API will come after it's tested in several projects.
+
 ## Idea behind these
 
 No tricks, no magic, no useless code, no complicated code.
