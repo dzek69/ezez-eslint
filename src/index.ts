@@ -51,7 +51,7 @@ const environment = {
     languageOptions: {
         parser: parserTs,
         parserOptions: {
-            project: "./tsconfig.json",
+            project: ["./tsconfig.lint.json", "./tsconfig.json"],
         },
         globals: {
             ...globals.browser,

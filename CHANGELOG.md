@@ -6,6 +6,10 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 ## [UNRELEASED]
 (nothing yet)
 
+## [0.0.5] - 2024-05-28
+### Changed
+- with types enabled look for both `tsconfig.lint.json` and `tsconfig.json` by default
+
 ## [0.0.4] - 2024-05-28
 ### Fixed
 - `no-duplicate-imports` should be disabled when using typescript and replaced with `import/no-duplicates` when using
