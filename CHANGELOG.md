@@ -6,6 +6,13 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 ## [UNRELEASED]
 (nothing yet)
 
+## [0.0.6] - 2024-05-28
+### Added
+- option to specify config for test files
+- property for extra rules config, currently allowing to set indentation
+### Removed
+- (unused) `getTestsDisabledRules` export
+
 ## [0.0.5] - 2024-05-28
 ### Changed
 - with types enabled look for both `tsconfig.lint.json` and `tsconfig.json` by default
