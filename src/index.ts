@@ -915,11 +915,6 @@ const getEslintConfig = (options: Options = {}): Linter.FlatConfig[] => { // esl
                 "no-dupe-class-members": OFF(),
                 "@typescript-eslint/no-dupe-class-members": ERROR(),
 
-                // "no-duplicate-imports": OFF(), // TODO should be moved to import plugin?
-                // "@typescript-eslint/no-duplicate-imports": ERROR( { // @TODO - deprecated https://github.com/typescript-eslint/typescript-eslint/blob/main/packages/eslint-plugin/docs/rules/no-duplicate-imports.md
-                //     includeExports: true,
-                // }),
-
                 "no-empty-function": OFF(),
                 "@typescript-eslint/no-empty-function": ERROR({ allow: [] }), // TODO maybe add private-constructors and protected-constructors?
 
@@ -1023,6 +1018,7 @@ const getEslintConfig = (options: Options = {}): Linter.FlatConfig[] => { // esl
         mergedOptions.base?.types && {
             name: "Rules that are not needed in typescript",
             rules: {
+                "no-duplicate-imports": OFF(), // this is broken with TS, it marks `import` & `import type` as duplicate
                 "no-new-native-nonconstructor": OFF(),
                 // consistent-return (already turned off)
             },
@@ -1314,7 +1310,7 @@ const getEslintConfig = (options: Options = {}): Linter.FlatConfig[] => { // esl
             },
         },
         mergedOptions.import && mergedOptions.base?.types && {
-            name: "Import - set parser & disable rules not needed with types",
+            name: "Import - set parser & disable rules from base package that are not needed",
             settings: {
                 "import/parsers": {
                     "@typescript-eslint/parser": [".ts", ".tsx"],
@@ -1325,8 +1321,7 @@ const getEslintConfig = (options: Options = {}): Linter.FlatConfig[] => { // esl
                 "import/named": OFF(),
                 "import/default": OFF(),
                 "import/namespace": OFF(),
-                // "@typescript-eslint/no-duplicate-imports": OFF(),
-                // ^ above does not exist?, should be disable base no-duplicate-imports ?
+                "no-duplicate-imports": OFF(),
             },
         },
     ].filter(truthy);

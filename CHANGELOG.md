@@ -6,6 +6,11 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 ## [UNRELEASED]
 (nothing yet)
 
+## [0.0.4] - 2024-05-28
+### Fixed
+- `no-duplicate-imports` should be disabled when using typescript and replaced with `import/no-duplicates` when using
+`import` plugin
+
 ## [0.0.3] - 2024-05-28
 ### Fixed
 - enable node and browser globals everywhere as temp workaround
