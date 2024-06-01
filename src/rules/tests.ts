@@ -19,6 +19,28 @@ const get = (mergedOptions: MergedOptions): Linter.FlatConfig | null => {
     const options = typeof mergedOptions.tests === "boolean" ? TESTS_DEFAULTS : mergedOptions.tests;
     const disableAnnoying = options.disableAnnoying !== false;
 
+    const rules = disableAnnoying
+        ? {
+            "global-require": OFF(),
+            "max-lines": OFF(),
+            "max-lines-per-function": OFF(),
+            "max-statements": OFF(),
+            "no-magic-numbers": OFF(),
+            "func-names": OFF(),
+            "no-unused-labels": OFF(),
+
+            "react/no-multi-comp": OFF(),
+
+            "@typescript-eslint/no-empty-function": OFF(),
+            "@typescript-eslint/no-magic-numbers": OFF(),
+            "@typescript-eslint/no-unsafe-call": OFF(),
+            "@typescript-eslint/no-unsafe-member-access": OFF(),
+            "@typescript-eslint/no-unnecessary-condition": OFF(),
+            "@typescript-eslint/require-await": OFF(),
+        }
+        : {};
+    const userRules = options.rules || {};
+
     return {
         name: "Tests related",
         files: EXTENSIONS.map((ext) => `**/*.spec.${ext}`),
@@ -29,24 +51,10 @@ const get = (mergedOptions: MergedOptions): Linter.FlatConfig | null => {
                 ...options.globals,
             },
         },
-        rules: disableAnnoying
-            ? {
-                "global-require": OFF(),
-                "max-lines": OFF(),
-                "max-lines-per-function": OFF(),
-                "max-statements": OFF(),
-                "no-magic-numbers": OFF(),
-                "func-names": OFF(),
-                "no-unused-labels": OFF(),
-
-                "react/no-multi-comp": OFF(),
-
-                "@typescript-eslint/no-empty-function": OFF(),
-                "@typescript-eslint/no-magic-numbers": OFF(),
-                "@typescript-eslint/no-unsafe-call": OFF(),
-                "@typescript-eslint/no-unsafe-member-access": OFF(),
-            }
-            : {},
+        rules: {
+            ...rules,
+            ...userRules,
+        },
     };
 };
 

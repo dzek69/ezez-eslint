@@ -6,6 +6,13 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 ## [UNRELEASED]
 (nothing yet)
 
+## [0.0.7] - 2024-06-01
+### Changed
+- `@typescript-eslint/no-unnecessary-condition` & `@typescript-eslint/require-await` are now disabled in tests
+### Added
+- easy define custom rules for test files
+- JSDocs for options object
+
 ## [0.0.6] - 2024-05-28
 ### Added
 - option to specify config for test files
