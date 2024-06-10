@@ -6,6 +6,11 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 ## [UNRELEASED]
 (nothing yet)
 
+## [0.0.8] - 2024-06-10
+### Changed
+- set `eslint` as optional peer dependency, it should not be required to install eslint with this package, but if
+something else also installs `eslint` the version may mismatch and you should manually install it anyway
+
 ## [0.0.7] - 2024-06-01
 ### Changed
 - `@typescript-eslint/no-unnecessary-condition` & `@typescript-eslint/require-await` are now disabled in tests

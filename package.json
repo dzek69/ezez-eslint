@@ -1,6 +1,6 @@
 {
   "name": "@ezez/eslint",
-  "version": "0.0.7",
+  "version": "0.0.8",
   "repository": "git@github.com:dzek69/ezez-eslint.git",
   "author": "Jacek Nowacki",
   "license": "MIT",
@@ -52,6 +52,14 @@
     "ts-node": "^10.9.1",
     "typedoc": "^0.23.28",
     "typescript": "^5.2.2"
+  },
+  "peerDependencies": {
+    "eslint": "^9.3.0"
+  },
+  "peerDependenciesMeta": {
+    "eslint": {
+      "optional": true
+    }
   },
   "libraryTemplate": {
     "version": "3.11.2",
