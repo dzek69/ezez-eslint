@@ -6,6 +6,14 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 ## [UNRELEASED]
 (nothing yet)
 
+## [0.1.0] - 2024-11-07
+### Changed
+- `eslint` is no longer peer dependency
+- all the eslint packages are now installed as renamed dependencies, which
+should remove the need to install them manually to prevent versions mismatches
+### Breaking
+- you should use `ezlint` binary instead of `eslint` to run the linter
+
 ## [0.0.8] - 2024-06-10
 ### Changed
 - set `eslint` as optional peer dependency, it should not be required to install eslint with this package, but if

@@ -1,4 +1,4 @@
-import typescript from "@typescript-eslint/eslint-plugin";
+import typescript from "@ezez/__typescript-eslint__eslint-plugin";
 import { truthy } from "@ezez/utils";
 
 import type { MergedOptions } from "../types.js";

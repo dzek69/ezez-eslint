@@ -1,4 +1,4 @@
-import globals from "globals";
+import globals from "@ezez/_globals";
 
 import type { MergedOptions } from "../types.js";
 import type { Linter } from "eslint";

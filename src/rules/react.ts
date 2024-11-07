@@ -1,7 +1,7 @@
 import { truthy } from "@ezez/utils";
 // @ts-expect-error we don't need types
-import react from "eslint-plugin-react";
-import { fixupPluginRules } from "@eslint/compat";
+import react from "@ezez/_eslint-plugin-react";
+import { fixupPluginRules } from "@ezez/__eslint__compat";
 
 import type { MergedOptions } from "../types.js";
 import type { Linter } from "eslint";

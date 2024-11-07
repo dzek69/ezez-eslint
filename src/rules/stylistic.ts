@@ -1,4 +1,4 @@
-import stylistic from "@stylistic/eslint-plugin";
+import stylistic from "@ezez/__stylistic__eslint-plugin";
 import { truthy } from "@ezez/utils";
 
 import type { MergedOptions } from "../types.js";

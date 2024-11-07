@@ -1,6 +1,6 @@
 {
   "name": "@ezez/eslint",
-  "version": "0.0.8",
+  "version": "0.1.0",
   "repository": "git@github.com:dzek69/ezez-eslint.git",
   "author": "Jacek Nowacki",
   "license": "MIT",
@@ -11,7 +11,7 @@
     "compile:esm": "rm -rf esm && tsc --project tsconfig.esm.json && node ./build-scripts/compile.esm.after.mjs",
     "compile:cjs": "rm -rf dist && tsc --project tsconfig.cjs.json && node ./build-scripts/compile.cjs.after.mjs",
     "typecheck": "tsc --noEmit",
-    "lint": "eslint src/index.ts",
+    "lint": "bin/lint.mjs src/index.ts",
     "lint:fix": "pnpm run lint --fix",
     "prepack": "pnpm run compile",
     "prepublishOnly": "pnpm audit && pnpm run lint && pnpm run test && pnpm run docs",
@@ -20,6 +20,9 @@
     "updates": "pnpm dlx npm-check-updates --dep prod",
     "updates:dev": "pnpm dlx npm-check-updates --dep dev",
     "updates:all": "pnpm dlx npm-check-updates"
+  },
+  "bin": {
+    "ezlint": "bin/lint.mjs"
   },
   "exports": {
     ".": {
@@ -33,33 +36,27 @@
   "module": "./esm/index.js",
   "type": "module",
   "dependencies": {
-    "@eslint/compat": "^1.0.1",
+    "@ezez/__eslint__compat": "npm:@eslint/compat@^1.0.1",
+    "@ezez/__stylistic__eslint-plugin": "npm:@stylistic/eslint-plugin@^2.1.0",
+    "@ezez/__typescript-eslint__eslint-plugin": "npm:@typescript-eslint/eslint-plugin@^7.10.0",
+    "@ezez/__typescript-eslint__parser": "npm:@typescript-eslint/parser@^7.10.0",
+    "@ezez/_eslint": "npm:eslint@^9.3.0",
+    "@ezez/_eslint-plugin-import": "npm:eslint-plugin-import@^2.29.1",
+    "@ezez/_eslint-plugin-react": "npm:eslint-plugin-react@^7.34.1",
+    "@ezez/_globals": "npm:globals@^15.3.0",
     "@ezez/utils": "^4.0.0",
-    "@stylistic/eslint-plugin": "^2.1.0",
-    "@typescript-eslint/eslint-plugin": "^7.10.0",
-    "@typescript-eslint/parser": "^7.10.0",
-    "eslint": "^9.3.0",
-    "eslint-plugin-import": "^2.29.1",
-    "eslint-plugin-react": "^7.34.1",
-    "globals": "^15.3.0"
+    "execa": "^9.5.1"
   },
   "devDependencies": {
     "@knodes/typedoc-plugin-pages": "^0.23.4",
     "babel-plugin-module-extension": "^0.1.3",
+    "eslint": "^9.3.0",
     "fs-extra": "^11.1.1",
     "nodemon": "^3.0.1",
     "resolve-tspaths": "^0.8.15",
     "ts-node": "^10.9.1",
     "typedoc": "^0.23.28",
     "typescript": "^5.2.2"
-  },
-  "peerDependencies": {
-    "eslint": "^9.3.0"
-  },
-  "peerDependenciesMeta": {
-    "eslint": {
-      "optional": true
-    }
   },
   "libraryTemplate": {
     "version": "3.11.2",
