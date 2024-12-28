@@ -86,6 +86,7 @@ const get = (mergedOptions: MergedOptions): Linter.FlatConfig[] => {
                 "import/no-namespace": OFF(),
                 "import/extensions": OFF(), // TODO make configurable with flat configs
                 "import/order": ERROR({
+                    "named": false,
                     "groups": [
                         "builtin", "external", "type", "internal", "parent", "sibling", "index", "object", "unknown",
                     ],

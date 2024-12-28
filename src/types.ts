@@ -39,6 +39,10 @@ type Options = {
      */
     node?: boolean;
     /**
+     * @ezez/eslint-plugin-todo-task-id plugin rule
+     */
+    taskId?: boolean;
+    /**
      * Files to lint, defaults to all supported extensions in all folders.
      */
     files?: string[];

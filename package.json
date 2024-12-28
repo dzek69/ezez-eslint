@@ -1,6 +1,6 @@
 {
   "name": "@ezez/eslint",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "repository": "git@github.com:dzek69/ezez-eslint.git",
   "author": "Jacek Nowacki",
   "license": "MIT",
@@ -41,9 +41,10 @@
     "@ezez/__typescript-eslint__eslint-plugin": "npm:@typescript-eslint/eslint-plugin@^7.10.0",
     "@ezez/__typescript-eslint__parser": "npm:@typescript-eslint/parser@^7.10.0",
     "@ezez/_eslint": "npm:eslint@^9.3.0",
-    "@ezez/_eslint-plugin-import": "npm:eslint-plugin-import@^2.29.1",
+    "@ezez/_eslint-plugin-import": "npm:eslint-plugin-import@^2.31.0",
     "@ezez/_eslint-plugin-react": "npm:eslint-plugin-react@^7.34.1",
     "@ezez/_globals": "npm:globals@^15.3.0",
+    "@ezez/eslint-plugin-todo-task-id": "0.0.2-beta.1",
     "@ezez/utils": "^4.0.0",
     "execa": "^9.5.1"
   },
