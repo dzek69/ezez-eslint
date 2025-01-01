@@ -4,6 +4,9 @@ The format is based on [EZEZ changelog](https://ezez.dev/guidelines/changelog/)
 and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.html).
 
 ## [UNRELEASED]
+(nothing yet)
+
+## [0.3.0] - 2025-01-01
 ### Added
 - new rule configured `@stylistic/curly-newline`
 - ts rules: no-unsafe-function-type, no-unsafe-type-assertion, no-wrapper-object-types, related-getter-setter-pairs

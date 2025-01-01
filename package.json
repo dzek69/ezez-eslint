@@ -1,6 +1,6 @@
 {
   "name": "@ezez/eslint",
-  "version": "0.2.0+",
+  "version": "0.3.0",
   "repository": "git@github.com:dzek69/ezez-eslint.git",
   "author": "Jacek Nowacki",
   "license": "MIT",
@@ -14,7 +14,7 @@
     "lint": "bin/lint.mjs 'src/**/*.ts'",
     "lint:fix": "pnpm run lint --fix",
     "prepack": "pnpm run compile",
-    "prepublishOnly": "pnpm run audit && pnpm run lint && pnpm run test && pnpm run docs",
+    "prepublishOnly": "pnpm audit && pnpm run lint && pnpm run test && pnpm run docs",
     "start:dev": "nodemon",
     "start:dev:compatibility": "TS_NODE_FILES=true pnpm run start:dev",
     "updates": "pnpm dlx npm-check-updates --dep prod",
