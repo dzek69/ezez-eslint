@@ -4,7 +4,10 @@ The format is based on [EZEZ changelog](https://ezez.dev/guidelines/changelog/)
 and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.html).
 
 ## [UNRELEASED]
-(nothing yet)
+### Added
+- new rule configured `@stylistic/curly-newline`
+### Dev
+- `jsx/indent` disabled as `indent` took over now
 
 ## [0.2.0] - 2024-12-28
 ### Added

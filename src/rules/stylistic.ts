@@ -43,6 +43,10 @@ const get = (mergedOptions: MergedOptions): Linter.FlatConfig[] => {
                 "@stylistic/computed-property-spacing": ERROR("never", {
                     enforceForClassMembers: true,
                 }),
+                "@stylistic/curly-newline": ERROR({
+                    multiline: true,
+                    consistent: true,
+                }),
                 "@stylistic/dot-location": ERROR("property"),
                 "@stylistic/eol-last": ERROR("always"),
                 "@stylistic/function-call-spacing": ERROR("never"), // old name: func-call-spacing
@@ -141,6 +145,7 @@ const get = (mergedOptions: MergedOptions): Linter.FlatConfig[] => {
                 "@stylistic/quotes": ERROR("double", {
                     avoidEscape: false,
                     allowTemplateLiterals: true,
+                    ignoreStringLiterals: false,
                 }),
                 "@stylistic/rest-spread-spacing": ERROR("never"),
                 "@stylistic/semi": ERROR("always", {
@@ -216,10 +221,7 @@ const get = (mergedOptions: MergedOptions): Linter.FlatConfig[] => {
                 "@stylistic/jsx-equals-spacing": ERROR("never"),
                 "@stylistic/jsx-first-prop-new-line": ERROR("multiline"),
                 "@stylistic/jsx-function-call-newline": ERROR("multiline"),
-                "@stylistic/jsx-indent": ERROR(mergedOptions.config.indent, {
-                    checkAttributes: true,
-                    indentLogicalExpressions: true,
-                }),
+                "@stylistic/jsx-indent": OFF(), // deprecated
                 "@stylistic/jsx-indent-props": ERROR({
                     indentMode: mergedOptions.config.indent,
                     ignoreTernaryOperator: false,
