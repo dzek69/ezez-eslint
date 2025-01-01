@@ -28,9 +28,11 @@ const get = (mergedOptions: MergedOptions): Linter.FlatConfig | null => {
             "no-magic-numbers": OFF(),
             "func-names": OFF(),
             "no-unused-labels": OFF(),
+            "require-await": OFF(),
 
             "react/no-multi-comp": OFF(),
 
+            // TODO only disable these if types are enabled?
             "@typescript-eslint/no-empty-function": OFF(),
             "@typescript-eslint/no-magic-numbers": OFF(),
             "@typescript-eslint/no-unsafe-call": OFF(),

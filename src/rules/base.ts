@@ -299,10 +299,12 @@ const get = (mergedOptions: MergedOptions): Linter.FlatConfig[] => {
                 "prefer-template": OFF(),
                 "radix": ERROR("always"),
                 "require-await": WARN(),
-                "require-unicode-regexp": ERROR(),
+                "require-unicode-regexp": ERROR({
+                    requireFlag: undefined, // TODO allow to set this externally
+                }),
                 "require-yield": WARN(),
                 "sort-imports": OFF(),
-                "sort-keys": OFF(), // @TODO contrubute to docs and write about performance of varying keys order
+                "sort-keys": OFF(), // @TODO contribute to docs and write about performance of varying keys order
                 "sort-vars": OFF(),
                 "strict": ERROR("safe"),
                 "symbol-description": WARN(),
