@@ -13,7 +13,8 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 - `jsx/indent` disabled as `indent` took over now
 - some ts rules reconfigured with new options or new rules used instead of renamed/deprecated ones
 - added disabled ts rules: no-deprecated
-- eslint version bump
+- eslint & plugins version bump
+- other bumps to fix audit issues
 
 ## [0.2.0] - 2024-12-28
 ### Added

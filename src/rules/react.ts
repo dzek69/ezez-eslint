@@ -1,7 +1,5 @@
 import { truthy } from "@ezez/utils";
-// @ts-expect-error we don't need types
 import react from "@ezez/_eslint-plugin-react";
-import { fixupPluginRules } from "@ezez/__eslint__compat";
 
 import type { MergedOptions } from "../types.js";
 import type { Linter } from "eslint";
@@ -13,8 +11,7 @@ const get = (mergedOptions: MergedOptions): Linter.FlatConfig[] => {
         mergedOptions.react && {
             name: "React/JSX - JSX related",
             plugins: {
-                // eslint-disable-next-line @typescript-eslint/no-explicit-any,@typescript-eslint/no-unsafe-assignment,@typescript-eslint/no-unsafe-argument
-                react: fixupPluginRules(react) as any,
+                react,
             },
             settings: {
                 react: {
@@ -61,6 +58,7 @@ const get = (mergedOptions: MergedOptions): Linter.FlatConfig[] => {
                 "react/jsx-no-undef": OFF(), // ERROR( { allowGlobals: false }), TODO - that when no typescript - when flat config is ready
                 "react/jsx-no-useless-fragment": OFF(),
                 "react/jsx-props-no-spreading": OFF(),
+                "react/jsx-props-no-spread-multi": ERROR(),
                 "react/jsx-sort-default-props": OFF(), // deprecated, use react/sort-default-props
                 "react/jsx-space-before-closing": OFF(), // deprecated, use react/jsx-tag-spacing
                 "react/jsx-uses-react": ERROR(), // TODO disable when new jsx transform via flat config
@@ -86,6 +84,7 @@ const get = (mergedOptions: MergedOptions): Linter.FlatConfig[] => {
                 "react/forbid-elements": OFF(),
                 "react/forbid-foreign-prop-types": ERROR({ allowInPropTypes: false }),
                 "react/forbid-prop-types": OFF(),
+                "react/forward-ref-uses-ref": ERROR(),
                 "react/function-component-definition": ERROR({
                     namedComponents: "arrow-function",
                     unnamedComponents: "arrow-function",
@@ -125,6 +124,7 @@ const get = (mergedOptions: MergedOptions): Linter.FlatConfig[] => {
                 "react/no-unstable-nested-components": ERROR({
                     allowAsProps: false,
                     customValidators: [],
+                    // propNamePattern: "", (allows render* by default)
                 }),
                 "react/no-unused-class-component-methods": ERROR(),
                 "react/no-unused-prop-types": WARN({
