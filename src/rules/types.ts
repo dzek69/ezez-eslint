@@ -19,19 +19,14 @@ const get = (mergedOptions: MergedOptions): Linter.FlatConfig[] => {
                 "@typescript-eslint/array-type": ERROR({ default: "array" }),
                 "@typescript-eslint/await-thenable": WARN(),
                 "@typescript-eslint/ban-ts-comment": ERROR({
+                    // descriptionFormat
                     "ts-expect-error": "allow-with-description",
-                    "ts-ignore": "allow-with-description",
+                    "ts-ignore": false,
                     "ts-nocheck": "allow-with-description",
                     "ts-check": false,
                     "minimumDescriptionLength": 10,
                 }),
                 "@typescript-eslint/ban-tslint-comment": OFF(),
-                "@typescript-eslint/ban-types": ERROR({
-                    types: {
-                        object: false,
-                    },
-                    extendDefaults: true,
-                }),
                 "@typescript-eslint/class-literal-property-style": WARN("fields"), // @TODO needs verification in real life
                 "@typescript-eslint/consistent-generic-constructors": ERROR("constructor"),
                 "@typescript-eslint/consistent-indexed-object-style": OFF(), // the syntaxes mean different things
@@ -60,11 +55,16 @@ const get = (mergedOptions: MergedOptions): Linter.FlatConfig[] => {
                 "@typescript-eslint/no-confusing-void-expression": ERROR({
                     ignoreArrowShorthand: false,
                     ignoreVoidOperator: false,
+                    ignoreVoidReturningFunctions: false,
                 }),
+                "@typescript-eslint/no-deprecated": OFF(),
                 "@typescript-eslint/no-duplicate-enum-values": ERROR(),
                 "@typescript-eslint/no-duplicate-type-constituents": ERROR(),
                 "@typescript-eslint/no-dynamic-delete": ERROR(),
-                "@typescript-eslint/no-empty-interface": OFF(),
+                "@typescript-eslint/no-empty-object-type": ERROR({
+                    allowInterfaces: "with-single-extends",
+                    allowObjectTypes: "never",
+                }),
                 "@typescript-eslint/no-explicit-any": WARN({
                     fixToUnknown: false,
                     ignoreRestArgs: false,
@@ -77,8 +77,11 @@ const get = (mergedOptions: MergedOptions): Linter.FlatConfig[] => {
                     allowWithDecorator: false,
                 }),
                 "@typescript-eslint/no-floating-promises": WARN({
+                    checkThenables: false,
                     ignoreVoid: true,
                     ignoreIIFE: false,
+                    allowForKnownSafePromises: [],
+                    allowForKnownSafeCalls: [],
                 }),
                 "@typescript-eslint/no-for-in-array": ERROR(),
                 "@typescript-eslint/no-import-type-side-effects": ERROR(),
@@ -110,6 +113,7 @@ const get = (mergedOptions: MergedOptions): Linter.FlatConfig[] => {
                 "@typescript-eslint/no-non-null-assertion": OFF(),
                 "@typescript-eslint/no-parameter-properties": OFF(),
                 "@typescript-eslint/no-redundant-type-constituents": WARN(),
+                "@typescript-eslint/no-restricted-types": OFF(), // TODO should be easy to configure via options
                 "@typescript-eslint/no-require-imports": WARN({ allow: [] }),
                 "@typescript-eslint/no-this-alias": OFF({
                     allowDestructuring: true,
@@ -119,23 +123,29 @@ const get = (mergedOptions: MergedOptions): Linter.FlatConfig[] => {
                 "@typescript-eslint/no-unnecessary-boolean-literal-compare": OFF(),
                 "@typescript-eslint/no-unnecessary-condition": WARN({
                     allowConstantLoopConditions: false,
+                    checkTypePredicates: true, // TODO maybe it should be false? this whole rule seems annoying
                     allowRuleToRunWithoutStrictNullChecksIKnowWhatIAmDoing: false,
                 }),
                 "@typescript-eslint/no-unnecessary-qualifier": ERROR(), // @TODO verify if useful for enums? actually we probably want the opposite, see prefer-literal-enum-member docs
+                "@typescript-eslint/no-unnecessary-parameter-property-assignment": OFF(),
+                "@typescript-eslint/no-unnecessary-template-expression": WARN(), // renamed from no-useless-template-literals
                 "@typescript-eslint/no-unnecessary-type-arguments": WARN(), // @TODO to decide
                 "@typescript-eslint/no-unnecessary-type-assertion": ERROR(),
                 "@typescript-eslint/no-unnecessary-type-constraint": ERROR(),
+                "@typescript-eslint/no-unnecessary-type-parameters": OFF(), // @TODO may be useful? test on real code first
                 "@typescript-eslint/no-unsafe-argument": ERROR(),
                 "@typescript-eslint/no-unsafe-assignment": ERROR(),
                 "@typescript-eslint/no-unsafe-call": ERROR(),
                 "@typescript-eslint/no-unsafe-declaration-merging": ERROR(),
                 "@typescript-eslint/no-unsafe-enum-comparison": ERROR(),
+                "@typescript-eslint/no-unsafe-function-type": ERROR(),
                 "@typescript-eslint/no-unsafe-member-access": ERROR(),
                 "@typescript-eslint/no-unsafe-return": ERROR(),
+                "@typescript-eslint/no-unsafe-type-assertion": WARN(),
                 "@typescript-eslint/no-unsafe-unary-minus": ERROR(),
                 "@typescript-eslint/no-useless-empty-export": WARN(),
-                "@typescript-eslint/no-useless-template-literals": WARN(),
                 "@typescript-eslint/no-var-requires": ERROR({ allow: [] }),
+                "@typescript-eslint/no-wrapper-object-types": ERROR(),
                 "@typescript-eslint/non-nullable-type-assertion-style": OFF(),
                 "@typescript-eslint/parameter-properties": ERROR({
                     // allow: [],
@@ -149,10 +159,7 @@ const get = (mergedOptions: MergedOptions): Linter.FlatConfig[] => {
                 "@typescript-eslint/prefer-includes": WARN(),
                 "@typescript-eslint/prefer-literal-enum-member": WARN(),
                 "@typescript-eslint/prefer-namespace-keyword": ERROR(), // should not be used in ES2015+ automatically
-                "@typescript-eslint/prefer-nullish-coalescing": OFF({ // annoying
-                    ignoreConditionalTests: true,
-                    ignoreMixedLogicalExpressions: true,
-                }),
+                "@typescript-eslint/prefer-nullish-coalescing": OFF(), // annoying
                 "@typescript-eslint/prefer-optional-chain": ERROR(),
                 "@typescript-eslint/prefer-readonly": ERROR({
                     onlyInlineLambdas: false,
@@ -162,7 +169,7 @@ const get = (mergedOptions: MergedOptions): Linter.FlatConfig[] => {
                 "@typescript-eslint/prefer-regexp-exec": WARN(),
                 "@typescript-eslint/prefer-return-this-type": OFF(), // ts handles it already
                 "@typescript-eslint/prefer-string-starts-ends-with": ERROR({ allowSingleElementEquality: "always" }),
-                "@typescript-eslint/prefer-ts-expect-error": ERROR(),
+                "@typescript-eslint/prefer-ts-expect-error": OFF(), // deprecated
                 "@typescript-eslint/promise-function-async": OFF({
                     allowAny: true,
                     allowedPromiseNames: [],
@@ -171,6 +178,7 @@ const get = (mergedOptions: MergedOptions): Linter.FlatConfig[] => {
                     checkFunctionExpressions: true,
                     checkMethodDeclarations: true,
                 }),
+                "@typescript-eslint/related-getter-setter-pairs": WARN(),
                 "@typescript-eslint/require-array-sort-compare": WARN({
                     ignoreStringArrays: true,
                 }),
@@ -183,6 +191,7 @@ const get = (mergedOptions: MergedOptions): Linter.FlatConfig[] => {
                     skipCompoundAssignments: false,
                 }),
                 "@typescript-eslint/restrict-template-expressions": ERROR({
+                    allow: [], // TODO expose this to config?
                     allowNumber: true,
                     allowBoolean: false,
                     allowAny: false,
@@ -243,6 +252,9 @@ const get = (mergedOptions: MergedOptions): Linter.FlatConfig[] => {
                 "init-declarations": OFF(),
                 "@typescript-eslint/init-declarations": OFF(), // keep off
 
+                "max-params": OFF(),
+                "@typescript-eslint/max-params": OFF(), // keep off
+
                 "no-array-constructor": OFF(),
                 "@typescript-eslint/no-array-constructor": ERROR(),
 
@@ -261,8 +273,9 @@ const get = (mergedOptions: MergedOptions): Linter.FlatConfig[] => {
                 "no-loop-func": OFF(),
                 "@typescript-eslint/no-loop-func": ERROR(),
 
-                "no-loss-of-precision": OFF(),
-                "@typescript-eslint/no-loss-of-precision": ERROR(),
+                // This rule is deprecated, the base rule gained all its functionality
+                // "no-loss-of-precision": OFF(),
+                "@typescript-eslint/no-loss-of-precision": OFF(),
 
                 "no-magic-numbers": OFF(),
                 "@typescript-eslint/no-magic-numbers": ERROR({
@@ -291,8 +304,9 @@ const get = (mergedOptions: MergedOptions): Linter.FlatConfig[] => {
                 }),
 
                 "no-throw-literal": OFF(),
-                "@typescript-eslint/no-throw-literal": OFF(), // deprecated in favor of only-throw-error
+                "@typescript-eslint/no-throw-literal": OFF(), // removed in favor of only-throw-error
                 "@typescript-eslint/only-throw-error": ERROR({
+                    allow: [],
                     allowThrowingAny: false,
                     allowThrowingUnknown: false,
                 }),
@@ -315,8 +329,8 @@ const get = (mergedOptions: MergedOptions): Linter.FlatConfig[] => {
                     caughtErrorsIgnorePattern: undefined,
                     destructuredArrayIgnorePattern: "^_",
                     ignoreRestSiblings: true,
-                    // ignoreClassWithStaticInitBlock: false, - these two are not supported in ts
-                    // reportUsedIgnorePattern: false,
+                    ignoreClassWithStaticInitBlock: false,
+                    reportUsedIgnorePattern: false,
                 }),
 
                 "no-use-before-define": OFF(),
@@ -346,7 +360,11 @@ const get = (mergedOptions: MergedOptions): Linter.FlatConfig[] => {
                 "@typescript-eslint/prefer-destructuring": OFF(),
 
                 "prefer-promise-reject-errors": OFF(),
-                "@typescript-eslint/prefer-promise-reject-errors": ERROR({ allowEmptyReject: false }),
+                "@typescript-eslint/prefer-promise-reject-errors": ERROR({
+                    allowEmptyReject: false,
+                    allowThrowingAny: false,
+                    allowThrowingUnknown: false,
+                }),
             },
         },
         mergedOptions.base?.types && {

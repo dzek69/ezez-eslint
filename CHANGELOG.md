@@ -6,8 +6,11 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 ## [UNRELEASED]
 ### Added
 - new rule configured `@stylistic/curly-newline`
+- ts rules: no-unsafe-function-type, no-unsafe-type-assertion, no-wrapper-object-types, related-getter-setter-pairs
 ### Dev
 - `jsx/indent` disabled as `indent` took over now
+- some ts rules reconfigured with new options or new rules used instead of renamed/deprecated ones
+- added disabled ts rules: no-deprecated
 
 ## [0.2.0] - 2024-12-28
 ### Added
