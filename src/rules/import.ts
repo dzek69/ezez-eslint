@@ -1,5 +1,4 @@
 import { truthy } from "@ezez/utils";
-// @ts-expect-error No types needed
 import importPlugin from "@ezez/_eslint-plugin-import";
 import { fixupPluginRules } from "@ezez/__eslint__compat";
 

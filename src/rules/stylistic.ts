@@ -57,10 +57,10 @@ const get = (mergedOptions: MergedOptions): Linter.FlatConfig[] => {
                     after: false,
                 }),
                 "@stylistic/implicit-arrow-linebreak": ERROR("beside"),
-                "@stylistic/indent": ERROR(mergedOptions.config.indent, {
+                "@stylistic/indent": ERROR(mergedOptions.config!.indent, {
                     SwitchCase: 1,
                 }),
-                "@stylistic/indent-binary-ops": ERROR(mergedOptions.config.indent),
+                "@stylistic/indent-binary-ops": ERROR(mergedOptions.config!.indent),
                 "@stylistic/key-spacing": ERROR({
                     beforeColon: false,
                     afterColon: true,
@@ -78,7 +78,7 @@ const get = (mergedOptions: MergedOptions): Linter.FlatConfig[] => {
                 "@stylistic/lines-between-class-members": ERROR("always", { exceptAfterSingleLine: false }), // TODO this is very configureable now, we should check
                 "@stylistic/max-len": ERROR({
                     code: 120,
-                    tabWidth: mergedOptions.config.indent,
+                    tabWidth: mergedOptions.config!.indent,
                     comments: 1000,
                     ignorePattern: undefined,
                     ignoreComments: false,
@@ -223,7 +223,7 @@ const get = (mergedOptions: MergedOptions): Linter.FlatConfig[] => {
                 "@stylistic/jsx-function-call-newline": ERROR("multiline"),
                 "@stylistic/jsx-indent": OFF(), // deprecated
                 "@stylistic/jsx-indent-props": ERROR({
-                    indentMode: mergedOptions.config.indent,
+                    indentMode: mergedOptions.config!.indent,
                     ignoreTernaryOperator: false,
                 }),
                 "@stylistic/jsx-max-props-per-line": ERROR({

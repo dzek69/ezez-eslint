@@ -24,7 +24,7 @@ const environment = {
 const get = (mergedOptions: MergedOptions): Linter.FlatConfig => {
     return {
         ...environment,
-        files: mergedOptions.files,
+        files: mergedOptions.files!,
     };
 };
 

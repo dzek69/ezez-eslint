@@ -21,31 +21,31 @@ type Options = {
          * Enable rules that are deprecated.
          */
         deprecated?: boolean;
-    };
+    } | undefined;
     /**
      * Stylistic rules. Disable if you use Prettier.
      */
-    stylistic?: boolean;
+    stylistic?: boolean | undefined;
     /**
      * Import plugin rules.
      */
-    import?: boolean;
+    import?: boolean | undefined;
     /**
      * React plugin rules.
      */
-    react?: boolean;
+    react?: boolean | undefined;
     /**
      * Node.js related rules. Enable if you use node.
      */
-    node?: boolean;
+    node?: boolean | undefined;
     /**
      * @ezez/eslint-plugin-todo-task-id plugin rule
      */
-    taskId?: boolean;
+    taskId?: boolean | undefined;
     /**
      * Files to lint, defaults to all supported extensions in all folders.
      */
-    files?: string[];
+    files?: string[] | undefined;
     /**
      * Enable test-specific rules and settings.
      * When `true` it assumes `jest` as the runner.
@@ -70,7 +70,7 @@ type Options = {
          * higher priority).
          */
         rules?: Linter.FlatConfig["rules"];
-    };
+    } | undefined;
     /**
      * Configuration options for tweaking the rules to your needs.
      */
@@ -79,7 +79,7 @@ type Options = {
          * The number of spaces to use for indentation.
          */
         indent?: number;
-    };
+    } | undefined;
 };
 
 type MergedOptions = Options & Pick<Required<Options>, "files" | "config">;
