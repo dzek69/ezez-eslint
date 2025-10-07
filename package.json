@@ -1,15 +1,14 @@
 {
   "name": "@ezez/eslint",
-  "version": "9.0.0",
+  "version": "9.0.0+",
   "repository": "git@github.com:dzek69/ezez-eslint.git",
   "author": "Jacek Nowacki",
   "license": "MIT",
   "scripts": {
     "test": "pnpm run lint",
     "docs": "typedoc src/index.ts --skipErrorChecking --out docs --includeVersion",
-    "compile": "pnpm run compile:esm && pnpm run compile:cjs",
+    "compile": "pnpm run compile:esm",
     "compile:esm": "rm -rf esm && tsc --project tsconfig.esm.json && node ./build-scripts/compile.esm.after.mjs",
-    "compile:cjs": "rm -rf dist && tsc --project tsconfig.cjs.json && node ./build-scripts/compile.cjs.after.mjs",
     "typecheck": "tsc --noEmit",
     "lint": "bin/lint.mjs 'src/**/*.ts'",
     "lint:fix": "pnpm run lint --fix",
@@ -26,12 +25,11 @@
   },
   "exports": {
     ".": {
-      "require": "./dist/index.js",
       "types": "./esm/index.d.ts",
       "default": "./esm/index.js"
     }
   },
-  "main": "./dist/index.js",
+  "main": "./esm/index.js",
   "types": "./esm/index.d.ts",
   "module": "./esm/index.js",
   "type": "module",
@@ -64,5 +62,6 @@
     "language": "typescript",
     "fixDefaultForCommonJS": true,
     "jsx": false
-  }
+  },
+  "packageManager": "pnpm@10.18.0"
 }

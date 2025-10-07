@@ -6,6 +6,12 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 ## [UNRELEASED]
 (nothing yet)
 
+## [9.0.0+]
+### Removed
+- cjs build, it was broken anyway and shouldn't be needed
+### Dev
+- set packageManager field
+
 ## [9.0.0] - 2025-08-25
 ### Changed
 - version bump to match current major eslint, this allows to IDE eslint service to work
