@@ -1,6 +1,6 @@
 {
   "name": "@ezez/eslint",
-  "version": "9.0.0+",
+  "version": "9.37.0",
   "repository": "git@github.com:dzek69/ezez-eslint.git",
   "author": "Jacek Nowacki",
   "license": "MIT",
@@ -35,10 +35,10 @@
   "type": "module",
   "dependencies": {
     "@ezez/__eslint__compat": "npm:@eslint/compat@^1.2.4",
-    "@ezez/__stylistic__eslint-plugin": "npm:@stylistic/eslint-plugin@^2.12.1",
+    "@ezez/__stylistic__eslint-plugin": "npm:@stylistic/eslint-plugin@^5.4.0",
     "@ezez/__typescript-eslint__eslint-plugin": "npm:@typescript-eslint/eslint-plugin@^8.19.0",
     "@ezez/__typescript-eslint__parser": "npm:@typescript-eslint/parser@^8.19.0",
-    "@ezez/_eslint": "npm:eslint@^9.17.0",
+    "@ezez/_eslint": "npm:eslint@^9.37.0",
     "@ezez/_eslint-plugin-import": "npm:eslint-plugin-import@^2.31.0",
     "@ezez/_eslint-plugin-react": "npm:eslint-plugin-react@^7.37.3",
     "@ezez/_globals": "npm:globals@^15.3.0",
@@ -49,7 +49,7 @@
   "devDependencies": {
     "@types/eslint": "^9.6.1",
     "babel-plugin-module-extension": "^0.1.3",
-    "eslint": "^9.17.0",
+    "eslint": "^9.37.0",
     "fs-extra": "^11.3.0",
     "nodemon": "^3.1.9",
     "resolve-tspaths": "^0.8.23",

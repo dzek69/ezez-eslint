@@ -12,7 +12,7 @@ const get = (mergedOptions: MergedOptions): Linter.FlatConfig[] => {
         mergedOptions.import && {
             name: "Import - static analysis",
             plugins: {
-                // eslint-disable-next-line @typescript-eslint/no-unsafe-argument,@typescript-eslint/no-unsafe-assignment,@typescript-eslint/no-explicit-any,@typescript-eslint/no-unsafe-type-assertion
+                // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment,@typescript-eslint/no-explicit-any,@typescript-eslint/no-unsafe-type-assertion
                 import: fixupPluginRules(importPlugin) as any,
             },
             settings: {

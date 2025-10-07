@@ -33,6 +33,7 @@ const get = (mergedOptions: MergedOptions): Linter.FlatConfig[] => {
                 "no-duplicate-case": ERROR(),
                 "no-duplicate-imports": ERROR({
                     includeExports: true,
+                    allowSeparateTypeImports: true,
                 }),
                 "no-empty-character-class": ERROR(),
                 "no-empty-pattern": ERROR({ allowObjectPatternsAsParameters: false }),
@@ -61,6 +62,7 @@ const get = (mergedOptions: MergedOptions): Linter.FlatConfig[] => {
                 "no-sparse-arrays": WARN(),
                 "no-template-curly-in-string": WARN(),
                 "no-this-before-super": ERROR(),
+                "no-unassigned-vars": OFF(), // no-unused-vars covers this
                 "no-undef": ERROR({ typeof: false }),
                 "no-unexpected-multiline": WARN(),
                 "no-unmodified-loop-condition": ERROR(),
@@ -228,7 +230,7 @@ const get = (mergedOptions: MergedOptions): Linter.FlatConfig[] => {
                 "no-redeclare": ERROR({ builtinGlobals: true }),
                 "no-regex-spaces": ERROR(),
                 "no-restricted-exports": OFF(),
-                "no-restricted-globals": OFF(), // @TODO we can use this to prevent fdescribe or stuff, verify
+                "no-restricted-globals": OFF(), // can't really define globals in 2025
                 "no-restricted-imports": OFF(),
                 "no-restricted-properties": OFF(),
                 "no-restricted-syntax": OFF(),
@@ -241,7 +243,9 @@ const get = (mergedOptions: MergedOptions): Linter.FlatConfig[] => {
                     ignoreOnInitialization: true,
                     allow: [],
                 }),
-                "no-shadow-restricted-names": ERROR(),
+                "no-shadow-restricted-names": ERROR({
+                    reportGlobalThis: true,
+                }),
                 "no-ternary": OFF(),
                 "no-throw-literal": ERROR(),
                 "no-undef-init": OFF(), // init-declarations should take care of this anyway
@@ -297,6 +301,9 @@ const get = (mergedOptions: MergedOptions): Linter.FlatConfig[] => {
                 "prefer-rest-params": ERROR(),
                 "prefer-spread": ERROR(),
                 "prefer-template": OFF(),
+                "preserve-caught-error": ERROR({
+                    requireCatchParameter: true,
+                }),
                 "radix": ERROR("always"),
                 "require-await": WARN(),
                 "require-unicode-regexp": ERROR({

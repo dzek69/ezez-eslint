@@ -4,9 +4,10 @@ import parserTs from "@ezez/__typescript-eslint__parser";
 import type { Linter } from "eslint";
 import type { MergedOptions } from "../types.js";
 
-const environment = {
+const environment: Linter.Config = {
     linterOptions: {
         reportUnusedDisableDirectives: true,
+        reportUnusedInlineConfigs: "error",
     },
     languageOptions: {
         parser: parserTs,
@@ -18,10 +19,10 @@ const environment = {
             ...globals.node,
         },
     },
-    files: [] satisfies string[],
+    files: [],
 };
 
-const get = (mergedOptions: MergedOptions): Linter.FlatConfig => {
+const get = (mergedOptions: MergedOptions): Linter.Config => {
     return {
         ...environment,
         files: mergedOptions.files!,

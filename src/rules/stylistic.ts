@@ -144,7 +144,7 @@ const get = (mergedOptions: MergedOptions): Linter.FlatConfig[] => {
                 }),
                 "@stylistic/quotes": ERROR("double", {
                     avoidEscape: false,
-                    allowTemplateLiterals: true,
+                    allowTemplateLiterals: "avoidEscape",
                     ignoreStringLiterals: false,
                 }),
                 "@stylistic/rest-spread-spacing": ERROR("never"),

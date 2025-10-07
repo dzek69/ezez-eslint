@@ -370,7 +370,6 @@ const get = (mergedOptions: MergedOptions): Linter.FlatConfig[] => {
         mergedOptions.base?.types && {
             name: "Base rules that are not needed in typescript",
             rules: {
-                "no-duplicate-imports": OFF(), // this is broken with TS, it marks `import` & `import type` as duplicate
                 "no-new-native-nonconstructor": OFF(),
                 // consistent-return (already turned off)
             },

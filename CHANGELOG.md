@@ -6,11 +6,17 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 ## [UNRELEASED]
 (nothing yet)
 
-## [9.0.0+]
+## [9.37.0] - 2025-10-07
+### Changed
+- rule `@stylistic/quotes` to allow template literals only to avoid escaping
+- enable base `no-duplicate-imports` on typescript with no `import` plugin
+- set new `reportUnusedInlineConfigs` linter option to true
+- bump eslint & @stylistic/eslint-plugin to current versions
 ### Removed
 - cjs build, it was broken anyway and shouldn't be needed
 ### Dev
 - set packageManager field
+- adjust version to exactly match current eslint
 
 ## [9.0.0] - 2025-08-25
 ### Changed
