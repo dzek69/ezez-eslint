@@ -1,5 +1,5 @@
-import globals from "@ezez/_globals";
 import parserTs from "@ezez/__typescript-eslint__parser";
+import globals from "@ezez/_globals";
 
 import type { Linter } from "eslint";
 import type { MergedOptions } from "../types.js";

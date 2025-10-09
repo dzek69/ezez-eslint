@@ -1,10 +1,26 @@
 All notable changes to this project will be documented in this file.
 
-The format is based on [EZEZ changelog](https://ezez.dev/guidelines/changelog/)
-and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.html).
+The format is based on [EZEZ changelog](https://ezez.dev/guidelines/changelog/).
+This versions follows eslint package with versioning, bumping patch version as needed.
+Changes in rules are never considered breaking.
 
 ## [UNRELEASED]
 (nothing yet)
+
+## [9.37.1] - 2025-10-09
+### Removed
+- disabled `no-useless-return` (will enable when disabling auto-fixing becomes a thing)
+### Changed
+- set some default allow list to `no-shadow` and allow easy customize
+- replaced `import/order` with `eslint-plugin-simple-import-sort` (same groups, sorts alphabetically)
+- updated @typescript-eslint/no-unsafe-member-access to allow optional chaining on any
+- clarified versioning policy in the changelog
+### Added
+- added @typescript-eslint/no-misused-spread
+- added @typescript-eslint/no-unnecessary-type-conversion
+### Dev
+- updated all the plugins
+- removed eslint/compat
 
 ## [9.37.0] - 2025-10-07
 ### Changed

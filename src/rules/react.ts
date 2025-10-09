@@ -1,10 +1,10 @@
-import { truthy } from "@ezez/utils";
 import react from "@ezez/_eslint-plugin-react";
+import { truthy } from "@ezez/utils";
 
-import type { MergedOptions } from "../types.js";
 import type { Linter } from "eslint";
+import type { MergedOptions } from "../types.js";
 
-import { ERROR, WARN, OFF } from "./_states.js";
+import { ERROR, OFF, WARN } from "./_states.js";
 
 const get = (mergedOptions: MergedOptions): Linter.FlatConfig[] => {
     return [

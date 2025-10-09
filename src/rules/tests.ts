@@ -1,10 +1,9 @@
 import globals from "@ezez/_globals";
 
-import type { MergedOptions } from "../types.js";
 import type { Linter } from "eslint";
+import type { MergedOptions } from "../types.js";
 
 import { EXTENSIONS } from "../defaults.js";
-
 import { OFF } from "./_states.js";
 
 const TESTS_DEFAULTS: NonNullable<Exclude<MergedOptions["tests"], boolean>> = {

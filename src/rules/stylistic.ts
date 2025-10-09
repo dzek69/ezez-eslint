@@ -1,8 +1,8 @@
 import stylistic from "@ezez/__stylistic__eslint-plugin";
 import { truthy } from "@ezez/utils";
 
-import type { MergedOptions } from "../types.js";
 import type { Linter } from "eslint";
+import type { MergedOptions } from "../types.js";
 
 import { ERROR, OFF } from "./_states.js";
 

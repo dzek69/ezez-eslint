@@ -1,9 +1,9 @@
 import { truthy } from "@ezez/utils";
 
-import type { MergedOptions } from "../types.js";
 import type { Linter } from "eslint";
+import type { MergedOptions } from "../types.js";
 
-import { ERROR, WARN, OFF } from "./_states.js";
+import { ERROR, OFF, WARN } from "./_states.js";
 
 const get = (mergedOptions: MergedOptions): Linter.FlatConfig[] => {
     return [
@@ -241,7 +241,7 @@ const get = (mergedOptions: MergedOptions): Linter.FlatConfig[] => {
                     builtinGlobals: true,
                     hoist: "all",
                     ignoreOnInitialization: true,
-                    allow: [],
+                    allow: mergedOptions.config!.allowShadow ?? [],
                 }),
                 "no-shadow-restricted-names": ERROR({
                     reportGlobalThis: true,
@@ -270,7 +270,7 @@ const get = (mergedOptions: MergedOptions): Linter.FlatConfig[] => {
                     ignoreExport: false,
                     ignoreDestructuring: false,
                 }),
-                "no-useless-return": ERROR(),
+                "no-useless-return": OFF(), // TODO turn on when autofix can be disabled
                 "no-var": ERROR(),
                 "no-void": ERROR({ allowAsStatement: false }),
                 "no-warning-comments": ERROR({

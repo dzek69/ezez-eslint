@@ -1,10 +1,10 @@
 import typescript from "@ezez/__typescript-eslint__eslint-plugin";
 import { truthy } from "@ezez/utils";
 
-import type { MergedOptions } from "../types.js";
 import type { Linter } from "eslint";
+import type { MergedOptions } from "../types.js";
 
-import { ERROR, WARN, OFF } from "./_states.js";
+import { ERROR, OFF, WARN } from "./_states.js";
 
 const get = (mergedOptions: MergedOptions): Linter.FlatConfig[] => {
     return [
@@ -33,6 +33,7 @@ const get = (mergedOptions: MergedOptions): Linter.FlatConfig[] => {
                 "@typescript-eslint/consistent-type-assertions": ERROR({
                     assertionStyle: "as",
                     objectLiteralTypeAssertions: "never",
+                    arrayLiteralTypeAssertions: "never",
                 }),
                 "@typescript-eslint/consistent-type-definitions": OFF(), // syntaxes mean different things
                 "@typescript-eslint/consistent-type-exports": ERROR({
@@ -50,7 +51,7 @@ const get = (mergedOptions: MergedOptions): Linter.FlatConfig[] => {
                 "@typescript-eslint/method-signature-style": ERROR("property"),
                 "@typescript-eslint/naming-convention": OFF(), // @TODO this is an advanced "camelcase", looks useful
                 "@typescript-eslint/no-array-delete": WARN(),
-                "@typescript-eslint/no-base-to-string": ERROR({ ignoredTypeNames: [] }),
+                "@typescript-eslint/no-base-to-string": ERROR({ ignoredTypeNames: [], checkUnknown: true }),
                 "@typescript-eslint/no-confusing-non-null-assertion": ERROR(),
                 "@typescript-eslint/no-confusing-void-expression": ERROR({
                     ignoreArrowShorthand: false,
@@ -102,6 +103,7 @@ const get = (mergedOptions: MergedOptions): Linter.FlatConfig[] => {
                     checksVoidReturn: true,
                     checksConditionals: true,
                 }),
+                "@typescript-eslint/no-misused-spread": ERROR({ allow: [] }),
                 "@typescript-eslint/no-mixed-enums": ERROR(),
                 "@typescript-eslint/no-namespace": ERROR({
                     allowDeclarations: false,
@@ -130,8 +132,12 @@ const get = (mergedOptions: MergedOptions): Linter.FlatConfig[] => {
                 "@typescript-eslint/no-unnecessary-parameter-property-assignment": OFF(),
                 "@typescript-eslint/no-unnecessary-template-expression": WARN(), // renamed from no-useless-template-literals
                 "@typescript-eslint/no-unnecessary-type-arguments": WARN(), // @TODO to decide
-                "@typescript-eslint/no-unnecessary-type-assertion": ERROR(),
+                "@typescript-eslint/no-unnecessary-type-assertion": ERROR({
+                    checkLiteralConstAssertions: false,
+                    typesToIgnore: [],
+                }),
                 "@typescript-eslint/no-unnecessary-type-constraint": ERROR(),
+                "@typescript-eslint/no-unnecessary-type-conversion": ERROR(),
                 "@typescript-eslint/no-unnecessary-type-parameters": OFF(), // @TODO may be useful? test on real code first
                 "@typescript-eslint/no-unsafe-argument": ERROR(),
                 "@typescript-eslint/no-unsafe-assignment": ERROR(),
@@ -139,7 +145,9 @@ const get = (mergedOptions: MergedOptions): Linter.FlatConfig[] => {
                 "@typescript-eslint/no-unsafe-declaration-merging": ERROR(),
                 "@typescript-eslint/no-unsafe-enum-comparison": ERROR(),
                 "@typescript-eslint/no-unsafe-function-type": ERROR(),
-                "@typescript-eslint/no-unsafe-member-access": ERROR(),
+                "@typescript-eslint/no-unsafe-member-access": ERROR({
+                    allowOptionalChaining: true,
+                }),
                 "@typescript-eslint/no-unsafe-return": ERROR(),
                 "@typescript-eslint/no-unsafe-type-assertion": WARN(),
                 "@typescript-eslint/no-unsafe-unary-minus": ERROR(),
@@ -298,7 +306,7 @@ const get = (mergedOptions: MergedOptions): Linter.FlatConfig[] => {
                     builtinGlobals: true,
                     hoist: "all",
                     ignoreOnInitialization: true,
-                    allow: [],
+                    allow: mergedOptions.config!.allowShadow ?? [],
                     ignoreTypeValueShadow: false,
                     ignoreFunctionTypeParameterNameValueShadow: false,
                 }),
@@ -307,6 +315,7 @@ const get = (mergedOptions: MergedOptions): Linter.FlatConfig[] => {
                 "@typescript-eslint/no-throw-literal": OFF(), // removed in favor of only-throw-error
                 "@typescript-eslint/only-throw-error": ERROR({
                     allow: [],
+                    allowRethrowing: false,
                     allowThrowingAny: false,
                     allowThrowingUnknown: false,
                 }),

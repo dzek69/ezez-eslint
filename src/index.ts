@@ -4,7 +4,10 @@ import type { Linter } from "eslint";
 import type { Options } from "./types.js";
 
 import { defaultOptions } from "./defaults.js";
-import { environment, stylistic, base, node, types, react, importPlugin, tests, todoTaskId } from "./rules/index.js";
+import {
+    base, environment, importPlugin, importSort, node, react, stylistic, tests, todoTaskId,
+    types,
+} from "./rules/index.js";
 
 /**
  * Gets the eslint configuration based on the options.
@@ -21,6 +24,7 @@ const getEslintConfig = (options: Options = {}): Linter.FlatConfig[] => {
         ...types.get(mergedOptions),
         ...react.get(mergedOptions),
         ...importPlugin.get(mergedOptions),
+        ...importSort.get(mergedOptions),
         ...todoTaskId.get(mergedOptions),
         tests.get(mergedOptions),
     ].filter(truthy);
@@ -33,3 +37,4 @@ const getEslintConfig = (options: Options = {}): Linter.FlatConfig[] => {
 export {
     getEslintConfig,
 };
+

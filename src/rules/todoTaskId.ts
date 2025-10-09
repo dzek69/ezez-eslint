@@ -1,8 +1,8 @@
-import { truthy } from "@ezez/utils";
 import todoTaskId from "@ezez/eslint-plugin-todo-task-id";
+import { truthy } from "@ezez/utils";
 
-import type { MergedOptions } from "../types.js";
 import type { Linter } from "eslint";
+import type { MergedOptions } from "../types.js";
 
 import { ERROR } from "./_states.js";
 
@@ -23,3 +23,4 @@ const get = (mergedOptions: MergedOptions): Linter.FlatConfig[] => {
 export {
     get,
 };
+

@@ -26,6 +26,11 @@ const defaultOptions: Options & Pick<Required<Options>, "files" | "config"> = {
     tests: true,
     config: {
         indent: DEFAULT_INDENT,
+        allowShadow: [
+            "name", "open", "close",
+            "length", "top", "status",
+            "event",
+        ],
     },
 };
 

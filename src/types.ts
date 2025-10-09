@@ -79,12 +79,17 @@ type Options = {
          * The number of spaces to use for indentation.
          */
         indent?: number;
+        /**
+         * List of variable names that can be shadowed (e.g. in inner scopes or as function parameters).
+         */
+        allowShadow?: string[];
     } | undefined;
 };
 
 type MergedOptions = Options & Pick<Required<Options>, "files" | "config">;
 
 export type {
-    Options,
     MergedOptions,
+    Options,
 };
+
