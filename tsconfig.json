@@ -26,9 +26,9 @@
             "dom"
         ],
         "mapRoot": null,
-        "module": "node16",
+        "module": "ES2022",
         "moduleDetection": "auto",
-        "moduleResolution": "node16",
+        "moduleResolution": "bundler",
         "moduleSuffixes": [
             ""
         ],

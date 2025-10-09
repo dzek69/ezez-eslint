@@ -278,7 +278,11 @@ const get = (mergedOptions: MergedOptions): Linter.FlatConfig[] => {
                     location: "anywhere",
                 }),
                 "no-with": ERROR(),
-                "object-shorthand": ERROR("consistent-as-needed"),
+                "object-shorthand": ERROR("always", {
+                    avoidQuotes: true,
+                    ignoreConstructors: false,
+                    avoidExplicitReturnArrows: false,
+                }),
                 "one-var": ERROR({
                     var: "consecutive",
                     let: "consecutive",

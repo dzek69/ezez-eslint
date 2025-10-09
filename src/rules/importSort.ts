@@ -6,6 +6,9 @@ import type { MergedOptions } from "../types.js";
 
 import { ERROR } from "./_states.js";
 
+const REGEX_REACT_LIBS_NOT_TYPES = "^(?!.*\\u0000)(?:react(?:[-/].*)?)$";
+const REGEX_REACT_LIBS = "^react(?:[-/].*)?(?:\\u0000)?$";
+
 const get = (mergedOptions: MergedOptions): Linter.FlatConfig[] => {
     return [
         mergedOptions.import && {
@@ -19,6 +22,8 @@ const get = (mergedOptions: MergedOptions): Linter.FlatConfig[] => {
                         // Node.js builtins prefixed with `node:`.
                         ["^node:"],
 
+                        [REGEX_REACT_LIBS_NOT_TYPES],
+
                         // Packages (runtime, not types)
                         // Things that start with a letter (or digit or underscore), or `@` followed by a letter.
                         ["^@?\\w(?:.*[^\\u0000])?$"],
@@ -30,6 +35,7 @@ const get = (mergedOptions: MergedOptions): Linter.FlatConfig[] => {
                         // Types - builtins, packages, absolute:
                         [
                             "^node:\\u0000$",
+                            REGEX_REACT_LIBS, // this won't match just "react + type bit", but it's handled before
                             "^@\\w\\u0000$",
                             "^[^\\.+].*\\u0000$",
 
@@ -52,4 +58,6 @@ const get = (mergedOptions: MergedOptions): Linter.FlatConfig[] => {
 
 export {
     get,
+    REGEX_REACT_LIBS_NOT_TYPES,
+    REGEX_REACT_LIBS,
 };
