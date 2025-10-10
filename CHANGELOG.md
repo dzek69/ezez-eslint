@@ -7,6 +7,10 @@ Changes in rules are never considered breaking.
 ## [UNRELEASED]
 (nothing yet)
 
+## [9.37.4] - 2025-10-10
+### Changed
+- `@stylistic/quotes` config reverted, because it's buggy
+
 ## [9.37.3] - 2025-10-10
 ### Added
 - `eslint-plugin-react-hooks` plugin

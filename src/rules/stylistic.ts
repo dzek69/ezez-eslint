@@ -143,7 +143,7 @@ const get = (mergedOptions: MergedOptions): Linter.Config[] => {
                     keywords: false,
                 }),
                 "@stylistic/quotes": ERROR("double", {
-                    avoidEscape: false,
+                    avoidEscape: true,
                     allowTemplateLiterals: "avoidEscape",
                     ignoreStringLiterals: false,
                 }),
