@@ -5,8 +5,7 @@ import type { Options } from "./types.js";
 
 import { defaultOptions } from "./defaults.js";
 import {
-    base, environment, importPlugin, importSort, node, react, stylistic, tests, todoTaskId,
-    types,
+    base, environment, importPlugin, importSort, node, react, reactHooks, stylistic, tests, todoTaskId, types,
 } from "./rules/index.js";
 
 /**
@@ -23,6 +22,7 @@ const getEslintConfig = (options: Options = {}): Linter.Config[] => {
         node.get(mergedOptions),
         ...types.get(mergedOptions),
         ...react.get(mergedOptions),
+        ...reactHooks.get(mergedOptions),
         ...importPlugin.get(mergedOptions),
         ...importSort.get(mergedOptions),
         ...todoTaskId.get(mergedOptions),

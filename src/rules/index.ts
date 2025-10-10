@@ -4,6 +4,7 @@ export * as importPlugin from "./import.js";
 export * as importSort from "./importSort.js";
 export * as node from "./node.js";
 export * as react from "./react.js";
+export * as reactHooks from "./reactHooks.js";
 export * as stylistic from "./stylistic.js";
 export * as tests from "./tests.js";
 export * as todoTaskId from "./todoTaskId.js";

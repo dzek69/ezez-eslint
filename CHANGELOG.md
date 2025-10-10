@@ -7,7 +7,9 @@ Changes in rules are never considered breaking.
 ## [UNRELEASED]
 (nothing yet)
 
-## [9.37.2+] - 2025-10-10
+## [9.37.3] - 2025-10-10
+### Added
+- `eslint-plugin-react-hooks` plugin
 ### Dev
 - some chores
 

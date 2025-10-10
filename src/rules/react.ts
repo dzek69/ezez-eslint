@@ -6,9 +6,13 @@ import type { MergedOptions } from "../types.js";
 
 import { ERROR, OFF, WARN } from "./_states.js";
 
-const get = (mergedOptions: MergedOptions): Linter.FlatConfig[] => {
+const get = (mergedOptions: MergedOptions): Linter.Config[] => {
+    const shouldEnable = mergedOptions.react === true || (
+        typeof mergedOptions.react === "object" && mergedOptions.react.base
+    );
+
     return [
-        mergedOptions.react && {
+        shouldEnable && {
             name: "React/JSX - JSX related",
             plugins: {
                 react,
@@ -65,7 +69,7 @@ const get = (mergedOptions: MergedOptions): Linter.FlatConfig[] => {
                 "react/jsx-uses-vars": ERROR(),
             },
         },
-        mergedOptions.react && {
+        shouldEnable && {
             name: "React/JSX - code style",
             rules: {
                 "react/boolean-prop-naming": OFF(),

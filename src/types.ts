@@ -32,8 +32,15 @@ type Options = {
     import?: boolean | undefined;
     /**
      * React plugin rules.
+     * Setting it to `true` enables base rules and hook base rules, but not react-compiler rules!
      */
-    react?: boolean | undefined;
+    react?: boolean | {
+        base: boolean;
+        hooks: {
+            base: boolean;
+            compiler: boolean;
+        };
+    } | undefined;
     /**
      * Node.js related rules. Enable if you use node.
      */
