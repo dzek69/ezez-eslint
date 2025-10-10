@@ -1,6 +1,6 @@
 {
   "name": "@ezez/eslint",
-  "version": "9.37.2",
+  "version": "9.37.2+",
   "repository": "git@github.com:dzek69/ezez-eslint.git",
   "author": "Jacek Nowacki",
   "license": "MIT",
@@ -40,6 +40,7 @@
     "@ezez/_eslint": "npm:eslint@^9.37.0",
     "@ezez/_eslint-plugin-import": "npm:eslint-plugin-import@^2.32.0",
     "@ezez/_eslint-plugin-react": "npm:eslint-plugin-react@^7.37.5",
+    "@ezez/_eslint-plugin-react-hooks": "npm:eslint-plugin-react-hooks@^7.0.0",
     "@ezez/_eslint-plugin-simple-import-sort": "npm:eslint-plugin-simple-import-sort@^12.1.1",
     "@ezez/_globals": "npm:globals@^16.4.0",
     "@ezez/eslint-plugin-todo-task-id": "^0.1.2",

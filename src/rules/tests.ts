@@ -11,7 +11,7 @@ const TESTS_DEFAULTS: NonNullable<Exclude<MergedOptions["tests"], boolean>> = {
     disableAnnoying: true,
 };
 
-const get = (mergedOptions: MergedOptions): Linter.FlatConfig | null => {
+const get = (mergedOptions: MergedOptions): Linter.Config | null => {
     if (!mergedOptions.tests) {
         return null;
     }

@@ -13,7 +13,7 @@ import {
  * Gets the eslint configuration based on the options.
  * @param options
  */
-const getEslintConfig = (options: Options = {}): Linter.FlatConfig[] => {
+const getEslintConfig = (options: Options = {}): Linter.Config[] => {
     const mergedOptions = merge(defaultOptions, options);
 
     return [

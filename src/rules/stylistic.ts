@@ -6,7 +6,7 @@ import type { MergedOptions } from "../types.js";
 
 import { ERROR, OFF } from "./_states.js";
 
-const get = (mergedOptions: MergedOptions): Linter.FlatConfig[] => {
+const get = (mergedOptions: MergedOptions): Linter.Config[] => {
     return [
         mergedOptions.stylistic && {
             name: "Base stylistic",

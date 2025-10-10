@@ -59,7 +59,7 @@ type Options = {
         /**
          * Define your custom globals if your test runner is not supported or if you want to add more/remove some.
          */
-        globals?: NonNullable<Linter.FlatConfig["languageOptions"]>["globals"];
+        globals?: NonNullable<Linter.Config["languageOptions"]>["globals"];
         /**
          * Should the rules that are annoying in the test files be disabled?
          */
@@ -69,7 +69,7 @@ type Options = {
          * If `disableAnnoying` is `true`, then the rules are merged with the library-defined ones (your rules have
          * higher priority).
          */
-        rules?: Linter.FlatConfig["rules"];
+        rules?: Linter.Config["rules"];
     } | undefined;
     /**
      * Configuration options for tweaking the rules to your needs.

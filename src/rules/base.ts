@@ -5,7 +5,7 @@ import type { MergedOptions } from "../types.js";
 
 import { ERROR, OFF, WARN } from "./_states.js";
 
-const get = (mergedOptions: MergedOptions): Linter.FlatConfig[] => {
+const get = (mergedOptions: MergedOptions): Linter.Config[] => {
     return [
         mergedOptions.base?.possibleProblems && {
             name: "Base possible problems",

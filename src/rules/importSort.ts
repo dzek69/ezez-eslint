@@ -9,7 +9,7 @@ import { ERROR } from "./_states.js";
 const REGEX_REACT_LIBS_NOT_TYPES = "^(?!.*\\u0000)(?:react(?:[-/].*)?)$";
 const REGEX_REACT_LIBS = "^react(?:[-/].*)?(?:\\u0000)?$";
 
-const get = (mergedOptions: MergedOptions): Linter.FlatConfig[] => {
+const get = (mergedOptions: MergedOptions): Linter.Config[] => {
     return [
         mergedOptions.import && {
             name: "Import - simple sort",

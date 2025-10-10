@@ -7,6 +7,10 @@ Changes in rules are never considered breaking.
 ## [UNRELEASED]
 (nothing yet)
 
+## [9.37.2+] - 2025-10-10
+### Dev
+- some chores
+
 ## [9.37.2] - 2025-10-10
 ### Changed
 - upgraded `object-shorthand` to always expect shorthand
