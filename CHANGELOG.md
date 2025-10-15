@@ -7,6 +7,10 @@ Changes in rules are never considered breaking.
 ## [UNRELEASED]
 (nothing yet)
 
+## [9.37.6] - 2025-10-15
+### Fixed
+- `@typescript-eslint/ban-ts-comment` configured wrong, allowing `ts-ignore` comments
+
 ## [9.37.5] - 2025-10-10
 ### Removed
 - disabled `@typescript-eslint/no-unsafe-type-assertion`

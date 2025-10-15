@@ -11,8 +11,7 @@ const get = (mergedOptions: MergedOptions): Linter.Config[] => {
         mergedOptions.base?.types && {
             name: "Base pure typescript",
             plugins: {
-                // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment,@typescript-eslint/no-explicit-any,@typescript-eslint/no-unsafe-type-assertion
-                "@typescript-eslint": typescript as any,
+                "@typescript-eslint": typescript as never,
             },
             rules: {
                 "@typescript-eslint/adjacent-overload-signatures": ERROR(),
@@ -21,7 +20,7 @@ const get = (mergedOptions: MergedOptions): Linter.Config[] => {
                 "@typescript-eslint/ban-ts-comment": ERROR({
                     // descriptionFormat
                     "ts-expect-error": "allow-with-description",
-                    "ts-ignore": false,
+                    "ts-ignore": true,
                     "ts-nocheck": "allow-with-description",
                     "ts-check": false,
                     "minimumDescriptionLength": 10,
