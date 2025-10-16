@@ -1,4 +1,5 @@
-import { merge, truthy } from "@ezez/utils";
+import { truthy } from "@ezez/utils";
+import { merge } from "ts-deepmerge";
 
 import type { Linter } from "eslint";
 import type { Options } from "./types.js";
@@ -13,7 +14,7 @@ import {
  * @param options
  */
 const getEslintConfig = (options: Options = {}): Linter.Config[] => {
-    const mergedOptions = merge(defaultOptions, options);
+    const mergedOptions = merge.withOptions({ mergeArrays: false }, defaultOptions, options);
 
     return [
         environment.get(mergedOptions),
@@ -34,7 +35,6 @@ const getEslintConfig = (options: Options = {}): Linter.Config[] => {
 
 // TODO look through deprecated
 
-export {
-    getEslintConfig,
-};
+export type { Options };
+export { getEslintConfig, defaultOptions };
 

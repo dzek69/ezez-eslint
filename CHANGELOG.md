@@ -7,6 +7,12 @@ Changes in rules are never considered breaking.
 ## [UNRELEASED]
 (nothing yet)
 
+## [9.37.7] - 2025-10-16
+### Breaking
+- given options are now deeply merged with default options (with full array overwrite), use now exported `defaultOptions` to re-build previous behavior
+### Changed
+- README update
+
 ## [9.37.6] - 2025-10-15
 ### Fixed
 - `@typescript-eslint/ban-ts-comment` configured wrong, allowing `ts-ignore` comments

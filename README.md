@@ -1,33 +1,28 @@
 # @ezez/eslint
 
-Zero config ESLint setup for all your projects. Very strict by default.
-
-> WIP warning:
->
-> This library is still in development, some breaking changes to the API will come after it's tested in several projects.
+Zero config, all-in-one-package ESLint setup for all your projects.
 
 ## Idea behind these
 
-No tricks, no magic, no useless code, no complicated code.
-Very opinionated about all these spaces, quotes, parentheses.
-A bit of sanity applied, but not too much.
+All JS tricks & magic are disallowed. Explicit, readable code is preferred over short code.
+It includes styling rules, if you find prettier too intrusive, this might be a good alternative.
 
-Based on now-deprecated:
-- @dzek69/eslint-config-base
-- @dzek69/eslint-config-typescript
-- @dzek69/eslint-config-import
-- @dzek69/eslint-config-react
+Very opinionated, but configurable.
 
-## Setup
+## Worry-less setup
 
 - install this package
 - create `eslint.config.mjs` in your root folder:
 ```typescript
-import { getEslintConfig } from "@ezez/eslint";
+import { getEslintConfig, detectReact } from "@ezez/eslint";
 
-export default getEslintConfig();
+export default getEslintConfig({
+    react: await detectReact(),
+});
 ```
-- if you need `react`, pass `{ react: true }` option object to `getEslintConfig()`
+- then use `ezlint` command in place of usual `eslint` command
+
+That's it, you don't need every plugin installed separately, you don't even need to install eslint!
 
 ## License
 
