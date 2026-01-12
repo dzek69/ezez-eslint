@@ -329,7 +329,7 @@ const get = (mergedOptions: MergedOptions): Linter.Config[] => {
         mergedOptions.base?.deprecated && {
             name: "Base deprecated",
             rules: {
-                "no-return-await": ERROR(),
+                "no-return-await": OFF(),
             },
         },
     ].filter(truthy);

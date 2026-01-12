@@ -285,7 +285,7 @@ const get = (mergedOptions: MergedOptions): Linter.Config[] => {
                 "@typescript-eslint/no-loss-of-precision": OFF(),
 
                 "no-magic-numbers": OFF(),
-                "@typescript-eslint/no-magic-numbers": ERROR({
+                "@typescript-eslint/no-magic-numbers": WARN({
                     ignore: [0, 1],
                     ignoreArrayIndexes: true,
                     ignoreDefaultValues: false,
@@ -359,7 +359,7 @@ const get = (mergedOptions: MergedOptions): Linter.Config[] => {
                 "@typescript-eslint/require-await": WARN(),
 
                 "no-return-await": OFF(),
-                "@typescript-eslint/return-await": ERROR("in-try-catch"),
+                "@typescript-eslint/return-await": ERROR("error-handling-correctness-only"),
 
                 "no-restricted-imports": OFF(),
                 "@typescript-eslint/no-restricted-imports": OFF(),

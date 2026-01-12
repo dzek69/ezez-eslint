@@ -7,6 +7,13 @@ Changes in rules are never considered breaking.
 ## [UNRELEASED]
 (nothing yet)
 
+## [9.39.3] - 2026-01-12
+### Fixed
+- missing 9.37.7 changes in 9.39.2 release
+### Changed
+- `no-magic-numbers` severity lowered to warning
+- disabled `no-return-await` and upgraded `@typescript-eslint/return-await` to enforce return await where needed and ignore otherwise
+
 ## [9.39.2] - 2026-01-12
 ### Added
 - easy way to enable more complex setup, enabling react rules only for some paths
