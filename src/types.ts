@@ -1,5 +1,7 @@
 import type { Linter } from "eslint";
 
+type LinterGlobals = NonNullable<Linter.Config["languageOptions"]>["globals"];
+
 type Options = {
     /**
      * Base rules for everyday needs.
@@ -31,14 +33,28 @@ type Options = {
      */
     import?: boolean | undefined;
     /**
-     * React plugin rules.
-     * Setting it to `true` enables base rules and hook base rules, but not react-compiler rules!
+     * React plugin rules:
+     * - undefined/false - disable
+     * - true - enable
+     * - array of strings - enable only in given folders, will add `✷✷.✷.jsx and ✷✷/✷.tsx if the path does not include any `✷` (anywhere) or `.` in last segment.
+     * Setting it to `true`/array of strings enables base rules and hook base rules, but not react-compiler rules!
      */
-    react?: boolean | {
+    react?: boolean | string[] | {
         base: boolean;
         hooks: {
             base: boolean;
             compiler: boolean;
+        };
+        /**
+         * Enable React rules only for files at given paths
+         */
+        files?: {
+            paths: string[];
+            /**
+             * If true (default) it will add extensions (jsx, tsx) to given paths if they do not include `✷` (anywhere) or `.` in last segment
+             * If array of strings - will add given extensions with the same rule as above
+             */
+            addExtensions: boolean | string[];
         };
     } | undefined;
     /**
@@ -66,7 +82,7 @@ type Options = {
         /**
          * Define your custom globals if your test runner is not supported or if you want to add more/remove some.
          */
-        globals?: NonNullable<Linter.Config["languageOptions"]>["globals"];
+        globals?: LinterGlobals;
         /**
          * Should the rules that are annoying in the test files be disabled?
          */
@@ -96,7 +112,7 @@ type Options = {
 type MergedOptions = Options & Pick<Required<Options>, "files" | "config">;
 
 export type {
-    MergedOptions,
     Options,
+    MergedOptions,
+    LinterGlobals,
 };
-

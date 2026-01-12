@@ -7,6 +7,15 @@ Changes in rules are never considered breaking.
 ## [UNRELEASED]
 (nothing yet)
 
+## [9.39.2] - 2026-01-12
+### Added
+- easy way to enable more complex setup, enabling react rules only for some paths
+### Changed
+- bumped eslint to 9.39.2
+- rule `@typescript-eslint/array-type` is now set as `array-simple`
+- rules `@typescript-eslint/array-type`, `max-lines`, `max-lines-per-function`, `max-statements` are now just a warning
+- rule `object-shorthand` changed to "always", this allows autofix to work better
+
 ## [9.37.7] - 2025-10-16
 ### Breaking
 - given options are now deeply merged with default options (with full array overwrite), use now exported `defaultOptions` to re-build previous behavior

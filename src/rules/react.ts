@@ -4,10 +4,11 @@ import { truthy } from "@ezez/utils";
 import type { Linter } from "eslint";
 import type { MergedOptions } from "../types.js";
 
+import { getFilesPropertyForReact } from "../utils/react";
 import { ERROR, OFF, WARN } from "./_states.js";
 
 const get = (mergedOptions: MergedOptions): Linter.Config[] => {
-    const shouldEnable = mergedOptions.react === true || (
+    const shouldEnable = mergedOptions.react === true || Array.isArray(mergedOptions.react) || (
         typeof mergedOptions.react === "object" && mergedOptions.react.base
     );
 
@@ -174,7 +175,12 @@ const get = (mergedOptions: MergedOptions): Linter.Config[] => {
                 "react/void-dom-elements-no-children": ERROR(),
             },
         },
-    ].filter(truthy);
+    ].filter(truthy).map((item) => {
+        return {
+            ...item,
+            ...getFilesPropertyForReact(mergedOptions),
+        };
+    });
 };
 
 export {

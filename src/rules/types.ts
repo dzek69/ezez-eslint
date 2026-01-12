@@ -15,7 +15,7 @@ const get = (mergedOptions: MergedOptions): Linter.Config[] => {
             },
             rules: {
                 "@typescript-eslint/adjacent-overload-signatures": ERROR(),
-                "@typescript-eslint/array-type": ERROR({ default: "array" }),
+                "@typescript-eslint/array-type": WARN({ default: "array-simple" }),
                 "@typescript-eslint/await-thenable": WARN(),
                 "@typescript-eslint/ban-ts-comment": ERROR({
                     // descriptionFormat

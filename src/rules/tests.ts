@@ -49,7 +49,7 @@ const get = (mergedOptions: MergedOptions): Linter.Config | null => {
             globals: {
                 ...(options.runner === "jest" ? globals.jest : {}),
                 ...(options.runner === "mocha" ? globals.mocha : {}),
-                ...options.globals,
+                ...(options.globals ?? {}),
             },
         },
         rules: {

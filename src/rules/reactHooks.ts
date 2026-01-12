@@ -4,19 +4,23 @@ import { truthy } from "@ezez/utils";
 import type { Linter } from "eslint";
 import type { MergedOptions } from "../types.js";
 
+import { getFilesPropertyForReact } from "../utils/react";
 import { ERROR, OFF, WARN } from "./_states.js";
 
 const get = (mergedOptions: MergedOptions): Linter.Config[] => {
-    const shouldEnableBase = mergedOptions.react === true || (
+    const shouldEnableBase = mergedOptions.react === true || Array.isArray(mergedOptions.react) || (
         typeof mergedOptions.react === "object" && mergedOptions.react.hooks.base
     );
-    const shouldEnableCompiler = typeof mergedOptions.react === "object" && mergedOptions.react.hooks.compiler;
+    const shouldEnableCompiler = !Array.isArray(mergedOptions.react)
+        && typeof mergedOptions.react === "object"
+        && mergedOptions.react.hooks.compiler;
 
     return [
         shouldEnableBase && {
             name: "React hooks - base",
             plugins: {
-                "react-hooks": reactHooks,
+                // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment,@typescript-eslint/no-explicit-any
+                "react-hooks": reactHooks as any,
             },
             rules: {
                 "react-hooks/rules-of-hooks": ERROR(),
@@ -33,7 +37,8 @@ const get = (mergedOptions: MergedOptions): Linter.Config[] => {
         shouldEnableCompiler && {
             name: "React hooks - compiler",
             plugins: {
-                "react-hooks": reactHooks,
+                // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment,@typescript-eslint/no-explicit-any
+                "react-hooks": reactHooks as any,
             },
             rules: {
                 "react-hooks/config": OFF(),
@@ -49,7 +54,12 @@ const get = (mergedOptions: MergedOptions): Linter.Config[] => {
                 "react-hooks/unsupported-syntax": OFF(), // there are base eslint rules for this
             },
         },
-    ].filter(truthy);
+    ].filter(truthy).map((item) => {
+        return {
+            ...item,
+            ...getFilesPropertyForReact(mergedOptions),
+        };
+    });
 };
 
 export {

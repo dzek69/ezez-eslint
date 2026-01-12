@@ -89,6 +89,9 @@ const get = (mergedOptions: MergedOptions): Linter.Config[] => {
                     classes: true,
                     variables: true,
                     allowNamedExports: false,
+                    enums: true,
+                    typedefs: true,
+                    ignoreTypeReferences: false,
                 }),
                 "no-useless-assignment": ERROR(),
                 "no-useless-backreference": WARN(),
@@ -140,12 +143,12 @@ const get = (mergedOptions: MergedOptions): Linter.Config[] => {
                 "max-depth": ERROR({
                     max: 5,
                 }),
-                "max-lines": ERROR({
+                "max-lines": WARN({
                     max: 200,
                     skipBlankLines: true,
                     skipComments: true,
                 }),
-                "max-lines-per-function": ERROR({
+                "max-lines-per-function": WARN({
                     max: 50,
                     skipBlankLines: true, // these on 03.10.2018 are documented wrong @TODO suggest a fix
                     skipComments: true,
@@ -153,7 +156,7 @@ const get = (mergedOptions: MergedOptions): Linter.Config[] => {
                 }),
                 "max-nested-callbacks": OFF(), // max-depth will handle this
                 "max-params": OFF(),
-                "max-statements": ERROR({
+                "max-statements": WARN({
                     max: 15,
                 // ignoreTopLevelFunctions: false,
                 }),
