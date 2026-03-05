@@ -11,7 +11,7 @@ const get = (mergedOptions: MergedOptions): Linter.Config[] => {
         mergedOptions.stylistic && {
             name: "Base stylistic",
             plugins: {
-                // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment,@typescript-eslint/no-explicit-any,@typescript-eslint/no-unsafe-type-assertion
+                // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment,@typescript-eslint/no-explicit-any
                 "@stylistic": stylistic as any,
             },
             rules: {

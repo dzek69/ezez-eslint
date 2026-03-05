@@ -7,6 +7,15 @@ Changes in rules are never considered breaking.
 ## [UNRELEASED]
 (nothing yet)
 
+## [9.39.4] - 2026-03-05
+### Added
+- `@typescript-eslint/no-useless-default-assignment` rule
+- `@typescript-eslint/strict-void-return` rule
+### Dev
+- bumped typescript plugin
+### Fixed
+- bumped eslint to 9.39.3 (previous version did not actually bump)
+
 ## [9.39.3] - 2026-01-12
 ### Fixed
 - missing 9.37.7 changes in 9.39.2 release

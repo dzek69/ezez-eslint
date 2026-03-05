@@ -150,6 +150,7 @@ const get = (mergedOptions: MergedOptions): Linter.Config[] => {
                 "@typescript-eslint/no-unsafe-return": ERROR(),
                 "@typescript-eslint/no-unsafe-type-assertion": OFF(), // this is annoying, in a clean codebase all type assertions are unsafe by nature
                 "@typescript-eslint/no-unsafe-unary-minus": ERROR(),
+                "@typescript-eslint/no-useless-default-assignment": ERROR(),
                 "@typescript-eslint/no-useless-empty-export": WARN(),
                 "@typescript-eslint/no-var-requires": ERROR({ allow: [] }),
                 "@typescript-eslint/no-wrapper-object-types": ERROR(),
@@ -219,6 +220,7 @@ const get = (mergedOptions: MergedOptions): Linter.Config[] => {
                     allowAny: false,
                     allowRuleToRunWithoutStrictNullChecksIKnowWhatIAmDoing: false,
                 }),
+                "@typescript-eslint/strict-void-return": ERROR(),
                 "@typescript-eslint/switch-exhaustiveness-check": OFF(), // not that useful and may be slow
                 "@typescript-eslint/triple-slash-reference": WARN({
                     path: "never",
@@ -339,6 +341,9 @@ const get = (mergedOptions: MergedOptions): Linter.Config[] => {
                     ignoreRestSiblings: true,
                     ignoreClassWithStaticInitBlock: false,
                     reportUsedIgnorePattern: false,
+                    enableAutofixRemoval: {
+                        imports: false,
+                    },
                 }),
 
                 "no-use-before-define": OFF(),
